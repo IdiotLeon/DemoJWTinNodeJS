@@ -44,7 +44,7 @@ let checkToken = (req, res, next) => {
 
     if (token) {
         jwt.verify(token,
-            secret,
+            getJWTSecret(),
             (err, decoded) => {
                 if (err) {
                     return res.json({

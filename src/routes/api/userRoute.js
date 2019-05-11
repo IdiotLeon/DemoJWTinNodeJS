@@ -39,24 +39,29 @@ userRouter.post('/user/login',
 // }
 
 // This is a protected route
-userRouter.get('/user/data',
+userRouter.get('/user/all',
     checkToken,
     (req, res) => {
+        res.json({
+            message: 'Successfully logged in',
+            content: req.body
+        })
+
         // to verify the JWT gemnerated for the user
-        jwt.verify(req.token,
-            'privatekey',
-            (err, authorizedData) => {
-                if (err) {
-                    console.log('Error: Could not connect to the protected route')
-                    res.sendStatus(403)
-                } else {
-                    res.json({
-                        message: 'Successfully logged in',
-                        authorizedData
-                    })
-                    console.log('SUCCESS: Connected to protected route')
-                }
-            })
+        // jwt.verify(req.token,
+        //     'privatekey',
+        //     (err, authorizedData) => {
+        //         if (err) {
+        //             console.log('Error: Could not connect to the protected route')
+        //             res.sendStatus(403)
+        //         } else {
+        //             res.json({
+        //                 message: 'Successfully logged in',
+        //                 authorizedData
+        //             })
+        //             console.log('SUCCESS: Connected to protected route')
+        //         }
+        //     })
     })
 
 module.exports = userRouter

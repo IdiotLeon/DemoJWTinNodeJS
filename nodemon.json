@@ -1,5 +1,5 @@
 {
-    "exec": "npm run dev",
+    "exec": "npm run dev_win",
     "watch": [
         "src/*",
         "public/*"
